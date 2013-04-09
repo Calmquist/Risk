@@ -4,6 +4,7 @@
 
 #include "DiceRoll.h"
 #include "Sorter.h"
+#include "get_int.h"
 
 using namespace std;
 
@@ -32,9 +33,14 @@ int DiceRoll::GetDefArmies(int D) {
 int DiceRoll::GetAtkArmies(int A) {
     do {
         cout << "How Many Units is the Attacker using?: ";
-        cin >> atk::roll;
+        do {
+        cout << "How Many Units is the Attacker using?: ";
+        atk::roll = get_int();
+        if(atk::roll == INT_MIN) {
+            \cout << "You did not input a number, try again." << endl;
+        }
 
-        if (atk::roll >= A) {
+        else if (atk::roll >= A) {
             if ((atk::roll - A) <= 0) {
                 cout << "Sorry, there needs to be at least one left. Try again." << endl;
                 continue;
