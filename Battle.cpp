@@ -4,6 +4,7 @@
 
 #include "battle.h"
 #include "DiceRoll.h"
+#include "get_int.h"
 
 using namespace std;
 
@@ -45,18 +46,28 @@ return v;
 int GetTotalA(){
     int attack;
 
-    std::cout << "How many units are in the attakers country: ";
-    std::cin >> attack;
+    do {
+        std::cout << "How many units are in the attakers country: ";
+        attack = get_int();
 
-    return attack;
+        if(attack == INT_MIN) {
+            std::cout << "You did not input a number. Try again." << std::endl;
+        }
+    } while (attack == INT_MIN);
 
 }
 
 int GetTotalD(){
     int defense;
 
-    std::cout << "How many units are in the defenders country: ";
-    std::cin >> defense;
+     do {
+        std::cout << "How many units are in the defenders country: ";
+        defense = get_int;
+
+        if(defense == INT_MIN) {
+            std::cout << "You did not input a number. Try again." << std::endl;
+        }
+    } while (attack == INT_MIN);
 
 return defense;
 }
@@ -157,7 +168,7 @@ reanw:
 
     int anw;
     std::cout << "  Do You Want to Play Again?" << std::endl;
-       std::cin >> anw;
+    anw = get_int();
 
         if ((anw == 1) && (A != 1) && (D != 0)){
             goto reroll;}
